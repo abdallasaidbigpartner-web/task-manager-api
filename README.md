@@ -61,3 +61,6 @@ A type-safe REST API built with Express and TypeScript, using PostgreSQL for per
 - [typescript-learning-journey](https://github.com/abdallasaidbigpartner-web/typescript-learning-journey)
 - [sql-learning-journey](https://github.com/abdallasaidbigpartner-web/sql-learning-journey)
 - [ai-study-assistant](https://github.com/abdallasaidbigpartner-web/ai-study-assistant)
+- [study-assistant-frontend](https://github.com/abdallasaidbigpartner-web/study-assistant-frontend)
+- [ecommerce-database](https://github.com/abdallasaidbigpartner-web/ecommerce-database)
+- [url-shortener-go](https://github.com/abdallasaidbigpartner-web/url-shortener-go)
