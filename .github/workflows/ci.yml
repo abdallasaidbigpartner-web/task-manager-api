@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: mydb
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set up database schema
+        run: |
+          PGPASSWORD=postgres psql -h localhost -U postgres -d mydb -c "CREATE TABLE IF NOT EXISTS ts_users (id SERIAL PRIMARY KEY, username VARCHAR(50) UNIQUE NOT NULL, password_hash VARCHAR(200) NOT NULL);"
+          PGPASSWORD=postgres psql -h localhost -U postgres -d mydb -c "CREATE TABLE IF NOT EXISTS tasks (id SERIAL PRIMARY KEY, user_id INT NOT NULL, title VARCHAR(200) NOT NULL, completed BOOLEAN DEFAULT FALSE, created_at TIMESTAMP DEFAULT NOW());"
+
+      - name: Run tests
+        env:
+          JWT_SECRET: test-secret-for-ci
+          PGUSER: postgres
+          PGPASSWORD: postgres
+        run: npx vitest run
