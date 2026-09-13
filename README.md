@@ -1,6 +1,6 @@
 # Task Manager API
 
-![CI](https://github.com/abdallasaidbigpartner-web/task-manager-api/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/abdallasaidbigpartner-web/task-manager-api/actions/workflows/ci.yml/badge.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 A type-safe REST API built with Express and TypeScript, using PostgreSQL for persistence, JWT for stateless authentication, and the Repository pattern to separate data access from route handling. Demonstrates TypeScript backend engineering as a standalone discipline - distinct from the Python backend work in a related repository.
 
