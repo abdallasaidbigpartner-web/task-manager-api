@@ -36,6 +36,8 @@ A type-safe REST API built with Express and TypeScript, using PostgreSQL for per
 
 ## Running Locally
 
+See `.env.example` for the required environment variables.
+
     npm install
     export JWT_SECRET=a_long_random_secret_string
     export PGUSER=your_postgres_user
